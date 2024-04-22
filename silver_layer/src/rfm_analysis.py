@@ -2,15 +2,17 @@
 from pyspark.sql.functions import *
 from pyspark.sql.types import *
 
-df = spark.table('workspace1.analysis.bronze_table').withColumn('sales', col('sales').cast(DoubleType()))
-df.display()
-
-# COMMAND ----------
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
+
+# COMMAND ----------
+
+df = spark.table('workspace1.analysis.bronze_table').withColumn('sales', col('sales').cast(DoubleType()))
+df.display()
+
+# COMMAND ----------
 
 data = df.toPandas()
 
