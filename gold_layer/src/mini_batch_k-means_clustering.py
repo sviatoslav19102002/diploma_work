@@ -43,7 +43,7 @@ rfm_scaled = scaler.fit_transform(rfm_data[['Recency', 'Frequency', 'Monetary']]
 
 silhouette_scores = []
 batch_size = 100
-for i in range(2, 11):  # start from 2 clusters since silhouette score cannot be computed with 1 cluster
+for i in range(2, 11):
     mbk = MiniBatchKMeans(n_clusters=i, init='k-means++', batch_size=batch_size, random_state=42)
     mbk.fit(rfm_scaled)
     score = silhouette_score(rfm_scaled, mbk.labels_)
